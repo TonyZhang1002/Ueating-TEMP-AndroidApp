@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ueating-TEMP</string>
+    <string name="title_home">主页</string>
+    <string name="title_orders">订单</string>
+    <string name="title_profile">我的</string>
+    <string name="default_username">立即登陆</string>
+</resources>
