@@ -19,19 +19,19 @@ public class ItemsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater;
     String[][] sub_categories;
-    public int categoryPoition;
+    public int categoryPosition;
 
     public ItemsAdapter(Context context, String[][] sub_categories, int position) {
         this.context = context;
         this.sub_categories = sub_categories;
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.categoryPoition = position;
+        this.categoryPosition = position;
     }
 
     @Override
     public int getCount() {
-        return sub_categories.length;
+        return sub_categories[categoryPosition].length;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ItemsAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.textView.setText(sub_categories[categoryPoition][position]);
+        viewHolder.textView.setText(sub_categories[categoryPosition][position]);
         viewHolder.textView.setTextColor(Color.BLACK);
         return convertView;
     }

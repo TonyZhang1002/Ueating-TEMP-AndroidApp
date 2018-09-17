@@ -3,6 +3,7 @@ package com.example.zhang.ueating_temp;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -52,7 +53,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment, container, false);
         initView();
-
         initAdapter();
         return view;
     }
@@ -82,6 +82,7 @@ public class HomeFragment extends Fragment {
         itemsAdapter = new ItemsAdapter(getActivity(), sub_categories,
                 position);
         subListView.setAdapter(itemsAdapter);
+        Log.v("Tony",itemsAdapter.getCount()+"");
         subListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1,
