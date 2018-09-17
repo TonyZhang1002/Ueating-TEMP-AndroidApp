@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.zhang.ueating_temp.R;
@@ -19,11 +20,13 @@ public class ItemsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater;
     String[][] sub_categories;
+    String[][] pic_urls;
     public int categoryPosition;
 
-    public ItemsAdapter(Context context, String[][] sub_categories, int position) {
+    public ItemsAdapter(Context context, String[][] sub_categories, String[][] pic_urls, int position) {
         this.context = context;
         this.sub_categories = sub_categories;
+        this.pic_urls = pic_urls;
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.categoryPosition = position;
@@ -50,12 +53,15 @@ public class ItemsAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.items_item, null);
             viewHolder = new ViewHolder();
+            viewHolder.imageView = (ImageView) convertView
+                    .findViewById(R.id.itemImageView);
             viewHolder.textView = (TextView) convertView
                     .findViewById(R.id.itemTextView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        viewHolder.imageView.setTag(pic_urls[categoryPosition][position]);
         viewHolder.textView.setText(sub_categories[categoryPosition][position]);
         viewHolder.textView.setTextColor(Color.BLACK);
         return convertView;
@@ -63,6 +69,7 @@ public class ItemsAdapter extends BaseAdapter {
 
     public static class ViewHolder {
         public TextView textView;
+        public ImageView imageView;
     }
 
 
