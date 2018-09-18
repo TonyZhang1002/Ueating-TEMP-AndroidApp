@@ -2,6 +2,7 @@ package com.example.zhang.ueating_temp.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,8 +54,7 @@ public class ItemsAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.items_item, null);
             viewHolder = new ViewHolder();
-            viewHolder.imageView = (ImageView) convertView
-                    .findViewById(R.id.itemImageView);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.itemImageView);
             viewHolder.textView = (TextView) convertView
                     .findViewById(R.id.itemTextView);
             convertView.setTag(viewHolder);
@@ -62,6 +62,7 @@ public class ItemsAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.imageView.setTag(pic_urls[categoryPosition][position]);
+        //Log.v("Tony",pic_urls[categoryPosition][0]);
         viewHolder.textView.setText(sub_categories[categoryPosition][position]);
         viewHolder.textView.setTextColor(Color.BLACK);
         return convertView;

@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
 
     String default_pic = "http://img0.sc115.com/uploads1/sc/jpgs/1510/apic15069_sc115.com.jpg";
     String pic_urls[][] = new String[][] {
-            new String[] { default_pic, default_pic, default_pic, default_pic, default_pic, default_pic, default_pic,
+            new String[] { default_pic, "123", default_pic, default_pic, default_pic, default_pic, default_pic,
                     default_pic, default_pic, default_pic, default_pic, default_pic, default_pic, default_pic, default_pic,
                     default_pic, default_pic, default_pic }
     };
@@ -92,11 +92,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+        Log.v("Tony",subListView.findViewWithTag(default_pic)+"");
+        /*
+        subListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
                 if(i==SCROLL_STATE_IDLE){
-                    lruCacheImageLoader.loadTagImageViewInListView(mStart,mEnd,pic_urls[location],listView);
+                    lruCacheImageLoader.loadTagImageViewInListView(mStart,mEnd,pic_urls[location],subListView);
                 }else {
                     lruCacheImageLoader.cancelAllTask();
                 }
@@ -107,11 +109,12 @@ public class HomeFragment extends Fragment {
                 mStart = i;
                 mEnd = i + i1;
                 if(mFirstIn && i1 >0){
-                    lruCacheImageLoader.loadTagImageViewInListView(mStart,mEnd,pic_urls[location],listView);
+                    lruCacheImageLoader.loadTagImageViewInListView(mStart,mEnd,pic_urls[location],subListView);
                     mFirstIn = false;
                 }
             }
         });
+        */
     }
 
 }
