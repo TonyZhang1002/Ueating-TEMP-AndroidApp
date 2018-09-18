@@ -2,11 +2,8 @@ package com.example.zhang.ueating_temp;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.View;
@@ -26,24 +23,27 @@ public class HomeFragment extends Fragment {
     public ListView subListView;
     CategoryAdapter categoryAdapter;
     ItemsAdapter itemsAdapter;
-    private LruCacheImageLoader lruCacheImageLoader;
-    private int mStart,mEnd;
 
-    private boolean mFirstIn ;
 
     String categories[] = new String[] { "美食" };
 
     String sub_categories[][] = new String[][] {
-            new String[] { "全部美食", "本帮江浙菜", "川菜", "粤菜", "湘菜", "东北菜", "台湾菜",
-                    "新疆/清真", "素菜", "火锅", "自助餐", "小吃快餐", "日本", "韩国料理", "东南亚菜",
-                    "西餐", "面包甜点", "其他" }
+            new String[] { "全部美食", "本帮江浙菜","川菜", "粤菜", "湘菜", "东北菜", "台湾菜",
+                    "新疆/清真", "素菜", "火锅", "自助餐" }
     };
 
-    String default_pic = "http://img0.sc115.com/uploads1/sc/jpgs/1510/apic15069_sc115.com.jpg";
     String pic_urls[][] = new String[][] {
-            new String[] { default_pic, "123", default_pic, default_pic, default_pic, default_pic, default_pic,
-                    default_pic, default_pic, default_pic, default_pic, default_pic, default_pic, default_pic, default_pic,
-                    default_pic, default_pic, default_pic }
+            new String[] { "http://img.mp.itc.cn/upload/20170424/18a44f374651414a91485b8470e34385_th.jpeg",
+                    "https://cdn2.ettoday.net/images/2597/d2597858.jpg",
+                    "https://media-cdn.tripadvisor.com/media/daodao/photo-s/10/4c/94/d1/caption.jpg",
+                    "http://img3.meichubang.com/d/file/201706/19/30178bf46db4ce045c632cb90143a3c9.jpeg",
+                    "http://www.skrf.nu/wp-content/uploads/2016/06/%E9%A4%90%E9%A3%B26.jpg",
+                    "http://pic.baike.soso.com/p/20090714/20090714010147-1836681475.jpg",
+                    "http://food.chinesecio.com/image/attachement/jpg/site2/20091214/0023aea9e73e0c903e7714.jpg",
+                    "http://img.mp.itc.cn/upload/20170504/03b13ea7d9604c628132cfacefc809b8_th.jpeg",
+                    "http://static.chinacaipu.com/d/file/menu/sushishipu/2015-06-02/b7a451115c297fe20e56caf07b24e545.jpg",
+                    "http://recipe0.hoto.cn/pic/recipe/l/b0/3d/343472_59d92f.jpg",
+                    "http://m1.aboluowang.com/uploadfile/2018/0130/20180130015943591.jpg"}
     };
 
     @Override
@@ -57,13 +57,11 @@ public class HomeFragment extends Fragment {
     private void initView(){
         listView = (ListView) view.findViewById(R.id.listView);
         subListView = (ListView) view.findViewById(R.id.subListView);
-        lruCacheImageLoader = LruCacheImageLoader.getInstance(getActivity());
     }
 
     private void initAdapter() {
         categoryAdapter = new CategoryAdapter(getActivity(), categories);
         listView.setAdapter(categoryAdapter);
-        mFirstIn = true;
         setSubList(0);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,29 +90,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Log.v("Tony",subListView.findViewWithTag(default_pic)+"");
-        /*
-        subListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-                if(i==SCROLL_STATE_IDLE){
-                    lruCacheImageLoader.loadTagImageViewInListView(mStart,mEnd,pic_urls[location],subListView);
-                }else {
-                    lruCacheImageLoader.cancelAllTask();
-                }
-            }
-
-            @Override
-            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-                mStart = i;
-                mEnd = i + i1;
-                if(mFirstIn && i1 >0){
-                    lruCacheImageLoader.loadTagImageViewInListView(mStart,mEnd,pic_urls[location],subListView);
-                    mFirstIn = false;
-                }
-            }
-        });
-        */
+        //Log.v("Tony",subListView.findViewWithTag(default_pic)+"");
     }
 
 }
